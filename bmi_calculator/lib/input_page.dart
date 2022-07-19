@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+const comonBoxColor = Colors.black54;
+const bottomContainerColor = const Color(0XFFEB1555);
+
 class InputPage extends StatefulWidget {
   const InputPage({Key? key}) : super(key: key);
 
@@ -19,25 +22,31 @@ class _InputPageState extends State<InputPage> {
         children:[
           Expanded(child: Row(children: [
 
-            Expanded(child: ReusableCard(colour: Colors.blue,),),
-            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            Expanded(child: ReusableCard(colour: comonBoxColor,),),
+            Expanded(child: ReusableCard(colour:  comonBoxColor,),),
 
 
           ],))
           ,
           Expanded(child: Row(children: [
-            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            Expanded(child: ReusableCard(colour:  comonBoxColor,),),
             
           ],))
         ,
         Expanded(child: Row(children: [
 
-            Expanded(child: ReusableCard(colour: Colors.blue,),),
-            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            Expanded(child: ReusableCard(colour:  comonBoxColor,),),
+            Expanded(child: ReusableCard(colour:  comonBoxColor,),),
 
 
           ],))
         
+       ,Container(
+        margin: EdgeInsets.only(top: 10.0),
+        width: double.infinity,
+        height: 80.0,
+        color:bottomContainerColor,
+       ),
         ] ,
       ),
     );
@@ -48,7 +57,7 @@ class _InputPageState extends State<InputPage> {
 
 class ReusableCard extends StatelessWidget {
 
-   Color colour;
+  final Color colour;
 
  ReusableCard({required this.colour});
 
@@ -58,9 +67,9 @@ class ReusableCard extends StatelessWidget {
     return Container(
       height: 200,
       width: 170,
-      margin: EdgeInsets.all(15),
+      margin: const EdgeInsets.all(15.0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(5)),
+        borderRadius: const BorderRadius.all(Radius.circular(5)),
         color: colour,
       ),
 
