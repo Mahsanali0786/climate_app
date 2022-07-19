@@ -12,45 +12,58 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("BMI Calculator"),
+        title: const Text("BMI Calculator"),
         centerTitle: true,
       ),
       body:Column(
-        children: [
-          Expanded(child: Row(children:[
-            Expanded(child: ReusableCard(colour:Color(0xFF1D1E33)),),
-            Expanded(child: ReusableCard(colour:Color(0xFF1D1E33)),)
-          ]),),
+        children:[
+          Expanded(child: Row(children: [
 
-          Expanded(child:ReusableCard(colour:Color(0xFF1D1E33)) ),
+            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            Expanded(child: ReusableCard(colour: Colors.blue,),),
 
-          Expanded(child: Row(children:[
-            Expanded(child: ReusableCard(colour:Color(0xFF1D1E33)),),
-            Expanded(child: ReusableCard(colour:Color(0xFF1D1E33)),)
-          ]),),
 
-        ],
+          ],))
+          ,
+          Expanded(child: Row(children: [
+            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            
+          ],))
+        ,
+        Expanded(child: Row(children: [
+
+            Expanded(child: ReusableCard(colour: Colors.blue,),),
+            Expanded(child: ReusableCard(colour: Colors.blue,),),
+
+
+          ],))
+        
+        ] ,
       ),
     );
   }
 }
 
+
+
 class ReusableCard extends StatelessWidget {
-  
-    late Color colour;
 
-    ReusableCard({required this.colour});
+   Color colour;
 
-  
+ ReusableCard({required this.colour});
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 200.0,
-      margin: EdgeInsets.all(15.0),
+      height: 200,
+      width: 170,
+      margin: EdgeInsets.all(15),
       decoration: BoxDecoration(
-          color: colour, 
-          borderRadius: BorderRadius.circular(10.0)),
+        borderRadius: BorderRadius.all(Radius.circular(5)),
+        color: colour,
+      ),
+
     );
   }
 }

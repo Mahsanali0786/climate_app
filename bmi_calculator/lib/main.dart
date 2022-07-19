@@ -8,17 +8,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp( 
       theme: ThemeData.dark().copyWith(
-        primaryColor: Colors.amber,
-        scaffoldBackgroundColor:Colors.black54,
+        primaryColor: Colors.black87,
+        scaffoldBackgroundColor: Colors.black87
       ),
-      
-      home: InputPage()
+          
+    
+      home: const InputPage()
 
     );
      }
 
 
 }
-
