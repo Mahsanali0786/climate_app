@@ -1,4 +1,4 @@
-import 'dart:html';
+
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -96,18 +96,35 @@ class _InputPageState extends State<InputPage> {
                           )
                         ],
                       ),
-                      Slider(
-                        value:height.toDouble(),
-                      min: kminimumvalueofslider.toDouble(),
-                      max: kmaximumvalueofslider.toDouble(),
-                      activeColor: Colors.pink,
-                      inactiveColor: Color.fromARGB(255, 190, 183, 183),
-                      onChanged: (double newValue){
-                        setState(() {
-                          height=newValue.round();
-                        });
-                      },
+                      SliderTheme(
+                        // ignore: prefer_const_constructors
+                        data: SliderTheme.of(context).copyWith(
+
+                          
+                          inactiveTrackColor:  const Color.fromARGB(255, 190, 183, 183),
+                          activeTrackColor: Colors.white,
+                          thumbColor: Colors.pink,
+                          overlayColor:const Color(0x29EB1555),
+                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+                          overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+                          
+                          
+                          
+
+                        ),
+                        child: Slider(
+                          value:height.toDouble(),
+                        min: kminimumvalueofslider.toDouble(),
+                        max: kmaximumvalueofslider.toDouble(),
+                       
                       
+                        onChanged: (double newValue){
+                          setState(() {
+                            height=newValue.round();
+                          });
+                        },
+                        
+                        ),
                       )
 
                     ],
