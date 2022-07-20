@@ -1,10 +1,11 @@
+import 'package:bmi_calculator/consatnts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InnerCard extends StatelessWidget {
 
 
-static const labelofCardText = TextStyle(fontSize: 18.0,color: Color(0xFF8D8E98));
+
 
   
   InnerCard({this.innerIcons=FontAwesomeIcons.addressCard,this.label=''});
@@ -22,7 +23,7 @@ static const labelofCardText = TextStyle(fontSize: 18.0,color: Color(0xFF8D8E98)
         SizedBox(height: 15.0,),
 
 
-        Text(label),
+        Text(label,style: klabelofCardText,),
 
       ],
     );
