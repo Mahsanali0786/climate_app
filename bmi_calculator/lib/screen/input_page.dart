@@ -8,7 +8,6 @@ import '../components/card-inside.dart';
 import '../components/consatnts.dart';
 import '../components/roundiconbtn.dart';
 import '../components/bottom_button.dart';
-import 'package:bmi_calculator/components/result_page.dart';
 import 'package:bmi_calculator/bmi_brain.dart';
 
 int weight = 60;
@@ -182,7 +181,7 @@ class _InputPageState extends State<InputPage> {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                    Text('Age',style: klabelofCardText,),
+                    const Text('Age',style: klabelofCardText,),
                     Text(age.toString(),style: kmainheadingofcard,),
                     Row(mainAxisAlignment:MainAxisAlignment.center,
                       children: [
