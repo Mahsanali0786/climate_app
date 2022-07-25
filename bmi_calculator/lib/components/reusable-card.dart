@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class ReusableCard extends StatelessWidget {
@@ -6,6 +5,7 @@ class ReusableCard extends StatelessWidget {
   final Color colour;
   final Widget cardChild;
   final  onPress;
+ // ignore: use_key_in_widget_constructors, prefer_const_constructors_in_immutables
  ReusableCard({this.cardChild=const Text(''),required this.colour,required this.onPress});
 
 

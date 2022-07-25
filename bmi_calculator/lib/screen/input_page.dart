@@ -1,15 +1,23 @@
 
 
+import 'package:bmi_calculator/components/result_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable-card.dart';
-import 'card-inside.dart';
-import 'consatnts.dart';
+import '../components/reusable-card.dart';
+import '../components/card-inside.dart';
+import '../components/consatnts.dart';
+import '../components/roundiconbtn.dart';
+import '../components/bottom_button.dart';
+import 'package:bmi_calculator/components/result_page.dart';
+import 'package:bmi_calculator/bmi_brain.dart';
 
+int weight = 60;
+int height=180;
+int age=19;
 enum Gender { male, female, gay }
 
 class InputPage extends StatefulWidget {
-  InputPage({Key? key}) : super(key: key);
+  const InputPage({Key? key}) : super(key: key);
 
   @override
   State<InputPage> createState() => _InputPageState();
@@ -18,7 +26,6 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   Color maleCardColor = kinactiveBoxcolor;
   Color femaleCardcolor = kinactiveBoxcolor;
-  int height=180;
   Gender selectedGender = Gender.gay;
 
   @override
@@ -73,7 +80,7 @@ class _InputPageState extends State<InputPage> {
               Expanded(
                 child: ReusableCard(
                   cardChild: Column(
-                    mainAxisAlignment: MainAxisAlignment.center ,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
                         'Height',
@@ -82,11 +89,11 @@ class _InputPageState extends State<InputPage> {
                       Row(
                         crossAxisAlignment: CrossAxisAlignment.baseline,
                         mainAxisAlignment: MainAxisAlignment.center,
-                        textBaseline:TextBaseline.alphabetic,
-                        
+                        textBaseline: TextBaseline.alphabetic,
+
                         // ignore: prefer_const_literals_to_create_immutables
                         children: [
-                           Text(
+                          Text(
                             height.toString(),
                             style: kmainheadingofcard,
                           ),
@@ -99,34 +106,27 @@ class _InputPageState extends State<InputPage> {
                       SliderTheme(
                         // ignore: prefer_const_constructors
                         data: SliderTheme.of(context).copyWith(
-
-                          
-                          inactiveTrackColor:  const Color.fromARGB(255, 190, 183, 183),
+                          inactiveTrackColor:
+                              const Color.fromARGB(255, 190, 183, 183),
                           activeTrackColor: Colors.white,
                           thumbColor: Colors.pink,
-                          overlayColor:const Color(0x29EB1555),
-                          thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
-                          overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
-                          
-                          
-                          
-
+                          overlayColor: const Color(0x29EB1555),
+                          thumbShape: const RoundSliderThumbShape(
+                              enabledThumbRadius: 15.0),
+                          overlayShape: const RoundSliderOverlayShape(
+                              overlayRadius: 30.0),
                         ),
                         child: Slider(
-                          value:height.toDouble(),
-                        min: kminimumvalueofslider.toDouble(),
-                        max: kmaximumvalueofslider.toDouble(),
-                       
-                      
-                        onChanged: (double newValue){
-                          setState(() {
-                            height=newValue.round();
-                          });
-                        },
-                        
+                          value: height.toDouble(),
+                          min: kminimumvalueofslider.toDouble(),
+                          max: kmaximumvalueofslider.toDouble(),
+                          onChanged: (double newValue) {
+                            setState(() {
+                              height = newValue.round();
+                            });
+                          },
                         ),
                       )
-
                     ],
                   ),
                   onPress: () {
@@ -142,6 +142,35 @@ class _InputPageState extends State<InputPage> {
             children: [
               Expanded(
                 child: ReusableCard(
+                  cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Weight',
+                          style: klabelofCardText,
+                        ),
+                        Text(
+                          weight.toString(),
+                          style: kmainheadingofcard,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                          Roundediconbutton(icon: FontAwesomeIcons.minus,Roundedbtnpress: (){
+                            setState(() {
+                             weight--; 
+                            
+                            });
+                          },),
+                          const SizedBox(width: 10.0,), 
+                          Roundediconbutton(icon: FontAwesomeIcons.plus,Roundedbtnpress: (){
+                            setState(() {
+                             weight++; 
+                            
+                            });
+                          },),
+                        ],)
+                      ]),
                   onPress: () {
                     //
                   },
@@ -150,22 +179,46 @@ class _InputPageState extends State<InputPage> {
               ),
               Expanded(
                 child: ReusableCard(
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                    Text('Age',style: klabelofCardText,),
+                    Text(age.toString(),style: kmainheadingofcard,),
+                    Row(mainAxisAlignment:MainAxisAlignment.center,
+                      children: [
+                      Roundediconbutton(icon: FontAwesomeIcons.minus,Roundedbtnpress: (){
+                        setState(() {
+                          age--;
+                        });
+                      },),
+                      const SizedBox(width: 10.0,),
+                       Roundediconbutton(icon: FontAwesomeIcons.plus,Roundedbtnpress: (){
+                        setState(() {
+                          age++;
+                        });
+                      },)
+                    ],)
+                  ]),
                   onPress: () {
                     //
                   },
                   colour: kinactiveBoxcolor,
                 ),
               ),
+              
             ],
           )),
-          Container(
-            margin: EdgeInsets.only(top: 10.0),
-            width: double.infinity,
-            height: 80.0,
-            color: kbottomContainerColor,
-          ),
-        ],
+         
+         BottomButton(bottombuttonText: 'CALCULATE',bottombtnonTap: (){
+            
+          Bmi_brain calc = Bmi_brain(height: height, weight: weight);
+
+          Navigator.push(context, MaterialPageRoute(builder: ((context) => Resultpage(bmiopinion: calc.ouropinion(),bmiresult: calc.bmiresult(),bmitext: calc.resultText(),))));
+         },)
+       
+        ]
       ),
     );
   }
 }
+

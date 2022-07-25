@@ -1,5 +1,7 @@
+
 import 'package:flutter/material.dart';
-import 'input_page.dart';
+import 'screen/input_page.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -14,8 +16,9 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.black87
       ),
           
-    
-      home:  InputPage()
+  home:InputPage(),
+
+   
 
     );
      }
