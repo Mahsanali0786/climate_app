@@ -1,8 +1,11 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class Roundediconbutton extends StatelessWidget {
   final IconData icon;
+  // ignore: non_constant_identifier_names
   final Roundedbtnpress;
   // ignore: non_constant_identifier_names, prefer_const_constructors_in_immutables, use_key_in_widget_constructors
   Roundediconbutton({this.icon=FontAwesomeIcons.plus,this.Roundedbtnpress});

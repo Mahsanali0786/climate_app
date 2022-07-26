@@ -1,6 +1,7 @@
 import 'dart:math';
 
 
+// ignore: camel_case_types
 class Bmi_brain {
 
 Bmi_brain({required this.height,required this.weight});
